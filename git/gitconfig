@@ -1,0 +1,26 @@
+[include]
+    path = ~/.gitconfig.local
+[core]
+    editor = vim
+    excludesfile = ~/.gitignore.global
+    pager = diff-highlight | less
+[color]
+    diff = auto
+    status = auto
+    branch = auto
+[alias]
+    ci = commit -v
+    co = checkout
+    st = status
+    br = branch
+    di = diff
+    dis = diff --staged
+[mergetool]
+    keepBackup = false
+    keepTemporaries = false
+[push]
+    default = simple
+[http]
+    postBuffer = 524288000
+[rebase]
+	autosquash = true

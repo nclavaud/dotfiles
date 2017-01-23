@@ -1,0 +1,96 @@
+" Vundle requirements {
+set nocompatible
+filetype off
+
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+Plugin 'gmarik/Vundle.vim'
+
+" My plugins
+Plugin 'scrooloose/nerdtree.git' " show nav tree
+Plugin 'kien/ctrlp.vim' " fast file search
+Plugin 'FelikZ/ctrlp-py-matcher' " super-fast matcher for ctrlp
+Plugin 'evidens/vim-twig' " syntax colorization for Twig templates
+Plugin 'bling/vim-airline' " airline status bar
+Plugin 'altercation/vim-colors-solarized' "solarized color scheme
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'airblade/vim-gitgutter' " show git diff in the gutter
+Plugin 'tpope/vim-fugitive' " git wrapper
+Plugin 'kylef/apiblueprint.vim' " syntax colorization for api-blueprint markdown files
+Plugin 'aklt/plantuml-syntax' " syntax colorization for PlantUML files
+Bundle 'joonty/vim-phpqa.git'
+
+call vundle#end()
+filetype plugin indent on
+" }
+
+syntax on
+
+" colors and scheme
+set t_Co=16
+:silent! colorscheme solarized
+set background=dark
+
+set ignorecase " ignore case by default when searching
+set nostartofline
+set number " show line numbers
+set hlsearch " highlight search results
+
+let g:mapleader=","
+
+if executable('ag')
+    " use ag over grep
+    set grepprg=ag\ --nogroup\ --nocolor
+    " use ag in CtrlP
+    let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+    " ag is fast enough that CtrlP does not need cache
+    let g:ctrlp_use_caching = 0
+endif
+let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
+let g:ctrlp_by_filename = 1
+
+" tabs
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+set smarttab
+set expandtab
+
+" airline
+set laststatus=2
+let g:airline#extensions#tabline#enabled=1
+let g:airline_theme='solarized'
+let g:airline_solarized_bg='dark'
+let g:airline_powerline_fonts = 1
+
+" PHP QA
+let g:phpqa_codesniffer_args="--standard=PSR2"
+let g:phpqa_codesniffer_cmd='docker run --rm -v $PWD:/project jolicode/phaudit phpcs'
+let g:phpqa_codesniffer_autorun=0
+let g:phpqa_messdetector_cmd='docker run --rm -v $PWD:/project jolicode/phaudit phpmd'
+let g:phpqa_messdetector_autorun=0
+let g:phpqa_codecoverage_showcovered=0
+
+" CTRL+n to display NERDTree
+map <C-n> :NERDTreeToggle<CR>
+map <C-j> :NERDTreeFind<CR>
+" switch between buffers
+map <S-Left> :bp<CR>
+map <S-Right> :bn<CR>
+" move current line/block up and down
+nmap <C-Up> :m .-2<CR>==
+nmap <C-Down> :m .+1<CR>==
+vmap <C-Up> :m '<-2<CR>gv=gv
+vmap <C-Down> :m '>+1<CR>gv=gv
+
+" Git commit messages word-wrap
+autocmd Filetype gitcommit setlocal textwidth=72
+
+" snippets config
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" activate vim-skeletons
+let skeletons#autoRegister = 1
