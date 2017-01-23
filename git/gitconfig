@@ -23,4 +23,4 @@
 [http]
     postBuffer = 524288000
 [rebase]
-	autosquash = true
+    autosquash = true
