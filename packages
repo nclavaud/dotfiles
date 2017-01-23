@@ -1,0 +1,30 @@
+#!/bin/bash
+
+# install (and remove) software
+
+apt-get update
+
+# great pieces of software
+apt-get install -y --no-install-recommends \
+    curl \
+    git \
+    meld \
+    network-manager-openvpn \
+    network-manager-openvpn-gnome \
+    silversearcher-ag \
+    terminator \
+    tig \
+    vim
+
+# needed in git config
+if [ ! -f /usr/local/bin/diff-highlight ]; then
+    curl https://raw.githubusercontent.com/git/git/master/contrib/diff-highlight/diff-highlight \
+        > /usr/local/bin/diff-highlight && chmod +x /usr/local/bin/diff-highlight
+fi
+
+# these I don't need
+apt-get --purge remove \
+    thunderbird
+
+apt-get autoremove
+apt-get autoclean
