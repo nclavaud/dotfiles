@@ -8,6 +8,7 @@ apt-get update
 apt-get install -y --no-install-recommends \
     curl \
     git \
+    htop \
     meld \
     network-manager-openvpn \
     network-manager-openvpn-gnome \
