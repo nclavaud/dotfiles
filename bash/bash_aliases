@@ -1,0 +1,24 @@
+#!/bin/bash
+
+source ~/.bash_functions
+source ~/.bash_aliases.local
+
+alias c="cal -B1 -A1"
+alias myip="curl -s checkip.dyndns.org | sed -e 's/.*Current IP Address: //' -e 's/<.*$//'"
+alias passwdgen="</dev/urandom tr -dc '12345!@#$%qwertQWERTasdfgASDFGzxcvbZXCVB' | head -c12; echo \"\""
+alias trim="sed 's/^\s*//g' | sed 's/\s*$//g'"
+
+# git aliases
+alias gfu="git fetch upstream"
+alias grm="git rebase upstream/master master"
+alias gsu="git submodule update"
+
+# open changed/staged files in vim
+alias vimdi="vimgit diff --diff-filter=ACMRTUXB"
+alias vimdis="vimgit diff --diff-filter=ACMRTUXB --staged"
+
+alias keybfr="setxkbmap fr"
+
+# copy/paste with clip
+alias ccopy="xclip -selection clipboard"
+alias cpaste="xclip -selection clipboard -o"
