@@ -7,6 +7,7 @@ apt-get update
 # great pieces of software
 apt-get install -y --no-install-recommends \
     curl \
+    gimp \
     git \
     htop \
     meld \
