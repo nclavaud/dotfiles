@@ -42,9 +42,11 @@ then
     read git_fullname
     echo -n "Enter your git email: "
     read git_email
-    echo "[user]" > ~/.gitconfig.local
-    echo "    name = ${git_fullname}" >> ~/.gitconfig.local
-    echo "    email = ${git_email}" >> ~/.gitconfig.local
+    tee ~/.gitconfig.local <<EOL
+[user]
+    name = ${git_fullname}
+    email = ${git_email}
+EOL
 
     ln -s ~/dotfiles/git/gitconfig ~/.gitconfig
 fi
