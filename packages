@@ -4,6 +4,9 @@
 
 apt-get update
 
+# update
+apt-get dist-upgrade -y
+
 # great pieces of software
 apt-get install -y --no-install-recommends \
     curl \
@@ -25,8 +28,8 @@ if [ ! -f /usr/local/bin/diff-highlight ]; then
 fi
 
 # these I don't need
-apt-get --purge remove \
+apt-get --purge -y remove \
     thunderbird
 
-apt-get autoremove
-apt-get autoclean
+apt-get -y autoremove
+apt-get -y autoclean
