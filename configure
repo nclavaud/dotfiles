@@ -1,0 +1,50 @@
+#!/bin/bash
+
+set -o errexit
+set -o pipefail
+set -o nounset
+
+if [ ! -d "/home/${USER}/dotfiles" ]
+then
+    echo "Directory ~/dotfiles does not exist." 
+    #git clone https://github.com/nclavaud/dotfiles.git ~/dotfiles
+    exit 1
+fi
+
+# configure bash
+if [ ! -e "/home/${USER}/.bash_aliases" ]
+then
+    ln -s ~/dotfiles/bash/bash_aliases ~/.bash_aliases
+    ln -s ~/dotfiles/bash/bash_functions ~/.bash_functions
+    source ~/.bash_aliases
+fi
+
+# configure vim
+if [ ! -e "/home/${USER}/.vimrc" ]
+then
+    mkdir -p ~/.vim/bundle
+    ln -s ~/dotfiles/vim/vimrc ~/.vimrc
+    git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+    vim +PluginInstall +qall
+fi
+
+# configure terminator
+if [ ! -d "/home/${USER}/.config/terminator" ]
+then
+    mkdir -p ~/.config/terminator
+    ln -s ~/dotfiles/terminator/config ~/.config/terminator/config
+fi
+
+# configure git
+if [ ! -e "/home/${USER}/.gitconfig" ]
+then
+    echo -n "Enter your git full name: "
+    read git_fullname
+    echo -n "Enter your git email: "
+    read git_email
+    echo "[user]" > ~/.gitconfig.local
+    echo "    name = ${git_fullname}" >> ~/.gitconfig.local
+    echo "    email = ${git_email}" >> ~/.gitconfig.local
+
+    ln -s ~/dotfiles/git/gitconfig ~/.gitconfig
+fi
