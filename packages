@@ -2,13 +2,17 @@
 
 # install (and remove) software
 
-apt-get update
+set -o errexit
+set -o pipefail
+set -o nounset
+
+sudo apt-get update
 
 # update
-apt-get dist-upgrade -y
+sudo apt-get dist-upgrade -y
 
 # great pieces of software
-apt-get install -y --no-install-recommends \
+sudo apt-get install -y --no-install-recommends \
     curl \
     gimp \
     git \
@@ -23,13 +27,14 @@ apt-get install -y --no-install-recommends \
 
 # needed in git config
 if [ ! -f /usr/local/bin/diff-highlight ]; then
-    curl https://raw.githubusercontent.com/git/git/master/contrib/diff-highlight/diff-highlight \
-        > /usr/local/bin/diff-highlight && chmod +x /usr/local/bin/diff-highlight
+    sudo curl https://raw.githubusercontent.com/git/git/master/contrib/diff-highlight/diff-highlight \
+        -o /usr/local/bin/diff-highlight
+    sudo chmod +x /usr/local/bin/diff-highlight
 fi
 
 # these I don't need
-apt-get --purge -y remove \
+sudo apt-get --purge -y remove \
     thunderbird
 
-apt-get -y autoremove
-apt-get -y autoclean
+sudo apt-get -y autoremove
+sudo apt-get -y autoclean
