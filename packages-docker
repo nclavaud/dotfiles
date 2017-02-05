@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# install docker
+
+set -o errexit
+set -o pipefail
+set -o nounset
+
+./docker-install
+./docker-postinstall
+./docker-compose-install 1.10.1

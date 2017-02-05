@@ -1,0 +1,20 @@
+#!/bin/bash
+
+# Configure Docker Engine
+# see https://docs.docker.com/engine/installation/linux/linux-postinstall/
+
+set -o errexit
+set -o pipefail
+set -o nounset
+
+sudo usermod -aG docker ${USER}
+
+# see https://docs.docker.com/engine/reference/commandline/dockerd/#/daemon-user-namespace-options
+
+sudo tee /etc/docker/daemon.json <<EOL
+{
+    "userns-remap": "$(id -u):$(id -g)"
+}
+EOL
+sudo chmod 600 /etc/docker/daemon.json
+sudo systemctl restart docker
