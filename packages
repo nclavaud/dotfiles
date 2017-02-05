@@ -34,6 +34,7 @@ fi
 
 # these I don't need
 sudo apt-get --purge -y remove \
+    evolution \
     thunderbird
 
 sudo apt-get -y autoremove
