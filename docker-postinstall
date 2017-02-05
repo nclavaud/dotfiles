@@ -10,10 +10,21 @@ set -o nounset
 sudo usermod -aG docker ${USER}
 
 # see https://docs.docker.com/engine/reference/commandline/dockerd/#/daemon-user-namespace-options
+# see https://blog.yadutaf.fr/2016/04/14/docker-for-your-users-introducing-user-namespace/
+
+# /etc/subuid
+echo "$(id -un):$(id -u):1" > /tmp/subuid
+cat /etc/subuid >> /tmp/subuid
+sudo mv /tmp/subuid /etc/subuid
+
+# /etc/subgid
+echo "$(id -gn):$(id -g):1" > /tmp/subgid
+cat /etc/subgid >> /tmp/subgid
+sudo mv /tmp/subgid /etc/subgid
 
 sudo tee /etc/docker/daemon.json <<EOL
 {
-    "userns-remap": "$(id -u):$(id -g)"
+    "userns-remap": "$(id -un)"
 }
 EOL
 sudo chmod 600 /etc/docker/daemon.json
