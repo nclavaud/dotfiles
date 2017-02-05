@@ -1,7 +1,12 @@
 #!/bin/bash
 
-source ~/.bash_functions
-source ~/.bash_aliases.local
+if [ -f ~/.bash_functions ]; then
+    . ~/.bash_functions
+fi
+
+if [ -f ~/.bash_aliases.local ]; then
+    . ~/.bash_aliases.local
+fi
 
 alias c="cal -B1 -A1"
 alias myip="curl -s checkip.dyndns.org | sed -e 's/.*Current IP Address: //' -e 's/<.*$//'"
