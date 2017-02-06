@@ -4,10 +4,41 @@ set -o errexit
 set -o pipefail
 set -o nounset
 
+if [ -f /tmp/private.zip ]
+then
+    echo -n "Enter the private archive to retrieve with SCP: "
+    read private_path
+
+    scp "${private_path}" /tmp/private.zip
+    unzip /tmp/private.zip -d /tmp
+
+    # ssh keys
+    mv /tmp/private/ssh/* ~/.ssh
+
+    # private aliases
+    mv /tmp/private/bash/bash_aliases.local ~/.bash_aliases.local
+
+    # private git config
+    mv /tmp/private/git/gitconfig.local ~/.gitconfig.local
+
+    # private hosts
+    cat /etc/hosts > hosts.bak
+    echo "" >> hosts.bak
+    cat /tmp/private/hosts/hosts >> hosts.bak
+    sudo cp /etc/hosts "/etc/hosts.$(date +%Y%m%d)"
+    sudo mv hosts.bak /etc/hosts
+    sudo chown root:root /etc/hosts
+    sudo chmod 644 /etc/hosts
+
+    rm /tmp/private.zip
+    rm -r /tmp/private
+fi
+
+exit 1
+
 if [ ! -d "/home/${USER}/dotfiles" ]
 then
     echo "Directory ~/dotfiles does not exist." 
-    #git clone https://github.com/nclavaud/dotfiles.git ~/dotfiles
     exit 1
 fi
 
@@ -33,20 +64,4 @@ if [ ! -d "/home/${USER}/.config/terminator" ]
 then
     mkdir -p ~/.config/terminator
     ln -s ~/dotfiles/terminator/config ~/.config/terminator/config
-fi
-
-# configure git
-if [ ! -e "/home/${USER}/.gitconfig" ]
-then
-    echo -n "Enter your git full name: "
-    read git_fullname
-    echo -n "Enter your git email: "
-    read git_email
-    tee ~/.gitconfig.local <<EOL
-[user]
-    name = ${git_fullname}
-    email = ${git_email}
-EOL
-
-    ln -s ~/dotfiles/git/gitconfig ~/.gitconfig
 fi
