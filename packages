@@ -18,6 +18,7 @@ sudo apt-get install -y --no-install-recommends \
     git \
     htop \
     httpie \
+    make \
     meld \
     network-manager-openvpn \
     network-manager-openvpn-gnome \
