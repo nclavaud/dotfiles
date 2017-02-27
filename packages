@@ -17,6 +17,7 @@ sudo apt-get install -y --no-install-recommends \
     gimp \
     git \
     htop \
+    httpie \
     meld \
     network-manager-openvpn \
     network-manager-openvpn-gnome \
