@@ -61,3 +61,11 @@ function phpfix {
 
     git diff --name-only --diff-filter=ACMRTUXB $BRANCH | xargs -n 1 ./scripts/fixcs
 }
+
+function crowdin-cli {
+    docker run --rm -it -v $(pwd):/tmp rubygem/crowdin-cli "$@"
+}
+
+function crowdin {
+    docker run --rm -it -v $(pwd):/crowdin lrqdo/crowdin-cli-2 "$@"
+}
