@@ -12,6 +12,7 @@ alias c="cal -B1 -A1"
 alias myip="curl -s checkip.dyndns.org | sed -e 's/.*Current IP Address: //' -e 's/<.*$//'"
 alias passwdgen="</dev/urandom tr -dc '12345!@#$%qwertQWERTasdfgASDFGzxcvbZXCVB' | head -c12; echo \"\""
 alias trim="sed 's/^\s*//g' | sed 's/\s*$//g'"
+alias dck="docker-compose"
 
 # git aliases
 alias gfu="git fetch upstream"
