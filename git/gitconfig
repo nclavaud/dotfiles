@@ -14,7 +14,11 @@
     st = status
     br = branch
     di = diff
+    dio = diff --name-only
     dis = diff --staged
+    diso = diff --staged --name-only
+    dim = diff master
+    dimo = diff master --name-only
 [merge]
     tool = meld
 [mergetool]
