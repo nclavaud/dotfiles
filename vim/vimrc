@@ -65,6 +65,7 @@ let g:airline_solarized_bg='dark'
 let g:airline_powerline_fonts = 1
 
 " PHP QA
+let g:phpqa_check=0
 let g:phpqa_codesniffer_args="--standard=PSR2"
 let g:phpqa_codesniffer_cmd='docker run --rm -v $PWD:/project jolicode/phaudit phpcs'
 let g:phpqa_codesniffer_autorun=0
@@ -94,3 +95,6 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 " activate vim-skeletons
 let skeletons#autoRegister = 1
+
+" no swapfile makes it easier to watch files and refresh code
+set noswapfile
