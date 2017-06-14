@@ -1,0 +1,5 @@
+#!/bin/sh
+
+# usage: cat model.pu | plantuml > model.png
+
+docker run -i --rm think/plantuml -tpng

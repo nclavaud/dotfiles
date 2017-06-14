@@ -1,0 +1,3 @@
+#!/bin/sh
+
+docker run -i --rm -v $(pwd):/home/node -w /home/node node node "$@"
