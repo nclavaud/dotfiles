@@ -1,0 +1,11 @@
+#!/bin/bash
+
+external="HDMI-1"
+
+xrandr --listmonitors | grep "${external}"
+if [ "$?" = "1" ]; then
+    echo "No external screen detected"
+    exit
+fi
+
+xrandr --output eDP-1 --off
