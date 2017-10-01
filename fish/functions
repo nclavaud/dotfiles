@@ -1,0 +1,65 @@
+#!/usr/bin/fish
+
+function everysearch --argument-names 'search' 'directory'
+    if test -n "$directory"
+        echo "Usage: $FUNCNAME SEARCH_STRING DIRECTORY";
+        return 1;
+    end
+
+    ag -i $search $directory
+end
+
+function everyplace --argument-names 'search' 'replace' 'directory'
+    if test -n "$directory"
+        echo "Usage: $FUNCNAME SEARCH_STRING REPLACE_STRING DIRECTORY";
+        return 1;
+    end
+
+    ag -l $search $directory | xargs sed -ri "s/$search/$replace/g"
+end
+
+function wcag
+    ag --noheading --nobreak $argv | wc -l
+end
+
+function vimag
+    vim (ag -l $argv)
+end
+
+function vimgit
+    vim (git $argv --name-only --relative)
+end
+
+function dockerip --argument-names 'container'
+    if test -n "$container"
+        echo "Usage: $FUNCNAME CONTAINER_ID_OR_NAME";
+        return 1;
+    end
+
+    docker inspect $container | grep '"IPAddress"' | sed -E 's/.*"IPAddress": "([0-9\.]+)".*/\1/'
+end
+
+function dbash --argument-names 'container'
+    if test -n "$container"
+        echo "Usage: $FUNCNAME CONTAINER_ID_OR_NAME";
+        return 1;
+    end
+
+    docker exec -ti $container /bin/bash
+end
+
+function phpfix --argument-names 'branch'
+    if test -n "$branch"
+        branch="master"
+    end
+
+    git diff --name-only --diff-filter=ACMRTUXB $branch | xargs -n 1 ./scripts/fixcs
+end
+
+function crowdin-cli
+    docker run --rm -it -v (pwd):/tmp rubygem/crowdin-cli $argv
+end
+
+function crowdin
+    docker run --rm -it -v (pwd):/crowdin lrqdo/crowdin-cli-2 $argv
+end
