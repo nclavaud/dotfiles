@@ -7,7 +7,7 @@ alias dk='docker-compose'
 # git aliases
 alias gfu='git fetch upstream'
 alias grm='git rebase upstream/master master'
-alias grim='git rebase -i master --ignore-date'
+alias grim='git rebase -i master'
 alias gsu='git submodule update'
 alias gg='gfu; and grm; and gsu'
 
