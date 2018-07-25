@@ -18,7 +18,7 @@
     dis = diff --staged
     diso = diff --staged --name-only
     dim = diff master
-    dimo = diff master --name-only
+    dimo = diff master --name-only --diff-filter=AM
 [merge]
     tool = meld
 [mergetool]
