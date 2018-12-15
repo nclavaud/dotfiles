@@ -29,6 +29,7 @@ syntax on
 
 " colors and scheme
 set t_Co=16
+let g:solarized_termcolors=16
 :silent! colorscheme solarized
 set background=light
 
