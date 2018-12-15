@@ -28,8 +28,9 @@ filetype plugin indent on
 syntax on
 
 " colors and scheme
-set t_Co=16
-let g:solarized_termcolors=16
+set t_Co=256
+let g:solarized_termolors=256
+let g:solarized_termtrans=1
 :silent! colorscheme solarized
 set background=light
 
