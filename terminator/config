@@ -4,6 +4,7 @@
   title_receive_fg_color = "#fdf6e3"
   title_transmit_bg_color = "#cb4b16"
   title_transmit_fg_color = "#fdf6e3"
+  always_split_with_profile = True
 [keybindings]
 [layouts]
   [[default]]
