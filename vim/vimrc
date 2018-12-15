@@ -100,3 +100,6 @@ let skeletons#autoRegister = 1
 
 " no swapfile makes it easier to watch files and refresh code
 set noswapfile
+
+" For those using the fish shell, see https://github.com/VundleVim/Vundle.Vim#quick-start
+set shell=/bin/bash
