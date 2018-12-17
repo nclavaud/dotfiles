@@ -75,6 +75,16 @@ let g:phpqa_messdetector_cmd='docker run --rm -v $PWD:/project jolicode/phaudit 
 let g:phpqa_messdetector_autorun=0
 let g:phpqa_codecoverage_showcovered=0
 
+function SwitchBackground()
+    if &background == 'light'
+        set background=dark
+    else
+        set background=light
+    endif
+endfunction
+
+" F8 to switch between light/dark background
+map <F8> :call SwitchBackground()<CR>
 " CTRL+n to display NERDTree
 map <C-n> :NERDTreeToggle<CR>
 map <C-j> :NERDTreeFind<CR>
