@@ -6,7 +6,7 @@
   title_transmit_bg_color = "#cb4b16"
   title_transmit_fg_color = "#fdf6e3"
 [keybindings]
-  next_profile = F8
+  next_profile = <Shift>F8
 [layouts]
   [[default]]
     [[[child1]]]
