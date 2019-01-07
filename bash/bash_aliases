@@ -7,10 +7,7 @@ alias trim="sed 's/^\s*//g' | sed 's/\s*$//g'"
 alias dk="docker-compose"
 
 # git aliases
-alias gfu="git fetch upstream"
-alias grm="git rebase upstream/master master"
-alias gsu="git submodule update"
-alias gg="gfu && grm && gsu"
+alias gg="git fetch upstream && git rebase upstream/master master && git submodule update"
 
 # open changed/staged files in vim
 alias vimdi="vimgit diff --diff-filter=ACMRTUXB"
