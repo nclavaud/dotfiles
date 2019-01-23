@@ -1,0 +1,11 @@
+#!/bin/bash
+
+grep '^set background=light$' ~/.vimrc > /dev/null
+
+if [ "$?" -eq "0" ]; then
+    sed -i 's/^set background=light$/set background=dark/' ~/.vimrc
+    echo "Switched from light to dark"
+else
+    sed -i 's/^set background=dark$/set background=light/' ~/.vimrc
+    echo "Switched from dark to light"
+fi
