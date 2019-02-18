@@ -10,7 +10,7 @@
     branch = auto
 [alias]
     ci = commit -v
-    co = "!f() { [ \"$1\" = \"amster\" ] && echo \"🐹🐹🐹\" || git checkout $@; }; f"
+    co = checkout
     st = status
     br = branch
     di = diff
