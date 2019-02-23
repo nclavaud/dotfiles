@@ -1,0 +1,25 @@
+#!/bin/bash
+
+# vim
+VIMRC="/home/nico/.vimrc"
+grep '^set background=light$' $VIMRC > /dev/null
+
+if [ "$?" -eq "0" ]; then
+    sed -i 's/^set background=light$/set background=dark/' $VIMRC
+    echo "Switched vim from light to dark"
+else
+    sed -i 's/^set background=dark$/set background=light/' $VIMRC
+    echo "Switched vim from dark to light"
+fi
+
+# terminator
+TERMINATOR_SHORTCUT="/home/nico/.local/share/applications/terminator.desktop"
+grep '^Exec=terminator$' $TERMINATOR_SHORTCUT > /dev/null
+
+if [ "$?" -eq "0" ]; then
+    sed -i 's/^Exec=terminator$/Exec=terminator -p dark/' $TERMINATOR_SHORTCUT
+    echo "Switched terminator from light to dark"
+else
+    sed -i 's/^Exec=terminator -p dark$/Exec=terminator/' $TERMINATOR_SHORTCUT
+    echo "Switched terminator from dark to light"
+fi
