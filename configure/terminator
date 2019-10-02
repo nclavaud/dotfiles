@@ -1,0 +1,8 @@
+#!/bin/bash
+
+set -o errexit
+set -o pipefail
+set -o nounset
+
+mkdir -p /home/${USER}/.config/terminator
+cp terminator/config /home/${USER}/.config/terminator/config

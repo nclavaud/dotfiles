@@ -1,0 +1,10 @@
+#!/bin/bash
+
+set -o errexit
+set -o pipefail
+set -o nounset
+
+# configure bash
+cp bash/bash_aliases /home/${USER}/.bash_aliases
+cp bash/bash_functions /home/${USER}/.bash_functions
+source /home/${USER}/.bash_aliases

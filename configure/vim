@@ -1,0 +1,10 @@
+#!/bin/bash
+
+set -o errexit
+set -o pipefail
+set -o nounset
+
+mkdir -p /home/${USER}/.vim/bundle
+cp vim/vimrc ~/.vimrc
+git clone https://github.com/VundleVim/Vundle.vim.git /home/${USER}/.vim/bundle/Vundle.vim
+vim +PluginInstall +qall
