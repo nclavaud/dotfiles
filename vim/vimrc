@@ -114,3 +114,5 @@ set noswapfile
 
 " For those using the fish shell, see https://github.com/VundleVim/Vundle.Vim#quick-start
 set shell=/bin/bash
+
+:set scrolloff=8
