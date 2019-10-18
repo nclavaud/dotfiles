@@ -31,8 +31,7 @@ sudo apt-get install -y --no-install-recommends \
 
 # needed in git config
 if [ ! -f /usr/local/bin/diff-highlight ]; then
-    sudo curl https://raw.githubusercontent.com/git/git/master/contrib/diff-highlight/diff-highlight \
-        -o /usr/local/bin/diff-highlight
+    cp /usr/share/doc/git/contrib/diff-highlight/diff-highlight -o /usr/local/bin/diff-highlight
     sudo chmod +x /usr/local/bin/diff-highlight
 fi
 
