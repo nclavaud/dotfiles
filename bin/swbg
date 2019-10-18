@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # vim
-VIMRC="/home/nico/.vimrc"
+VIMRC="/home/$USER/.vimrc"
 grep '^set background=light$' $VIMRC > /dev/null
 
 if [ "$?" -eq "0" ]; then
@@ -13,7 +13,7 @@ else
 fi
 
 # terminator
-TERMINATOR_SHORTCUT="/home/nico/.local/share/applications/terminator.desktop"
+TERMINATOR_SHORTCUT="/home/$USER/.local/share/applications/terminator.desktop"
 if [ -f "$TERMINATOR_SHORTCUT" ]; then
     grep '^Exec=terminator$' $TERMINATOR_SHORTCUT > /dev/null
     if [ "$?" -eq "0" ]; then
