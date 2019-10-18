@@ -53,6 +53,8 @@ if executable('ag')
 endif
 let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 let g:ctrlp_by_filename = 1
+" open multiple files in hidden buffers
+let g:ctrlp_open_multiple_files = 'i'
 
 " tabs
 set tabstop=4
