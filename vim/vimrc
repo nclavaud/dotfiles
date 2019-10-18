@@ -19,6 +19,7 @@ Plugin 'airblade/vim-gitgutter' " show git diff in the gutter
 Plugin 'tpope/vim-fugitive' " git wrapper
 Plugin 'kylef/apiblueprint.vim' " syntax colorization for api-blueprint markdown files
 Plugin 'aklt/plantuml-syntax' " syntax colorization for PlantUML files
+Plugin 'phpactor/phpactor' " refactoring utility for PHP
 Bundle 'joonty/vim-phpqa.git'
 Plugin 'editorconfig/editorconfig-vim' "
 
@@ -97,6 +98,10 @@ nmap <C-Up> :m .-2<CR>==
 nmap <C-Down> :m .+1<CR>==
 vmap <C-Up> :m '<-2<CR>gv=gv
 vmap <C-Down> :m '>+1<CR>gv=gv
+
+" import use statement
+map <C-u> :call phpactor#UseAdd()<CR>
+map <C-o> :call phpactor#GotoDefinition()<CR>
 
 " Git commit messages word-wrap
 autocmd Filetype gitcommit setlocal textwidth=72
