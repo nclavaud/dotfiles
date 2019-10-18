@@ -20,6 +20,7 @@ Plugin 'tpope/vim-fugitive' " git wrapper
 Plugin 'kylef/apiblueprint.vim' " syntax colorization for api-blueprint markdown files
 Plugin 'aklt/plantuml-syntax' " syntax colorization for PlantUML files
 Bundle 'joonty/vim-phpqa.git'
+Plugin 'editorconfig/editorconfig-vim' "
 
 call vundle#end()
 filetype plugin indent on
