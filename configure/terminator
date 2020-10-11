@@ -6,3 +6,6 @@ set -o nounset
 
 mkdir -p /home/${USER}/.config/terminator
 cp terminator/config /home/${USER}/.config/terminator/config
+
+# copy shortcut to allow swbg to rewrite exec line
+cp /usr/share/applications/terminator.desktop ~/.local/share/applications/
