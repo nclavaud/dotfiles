@@ -1,20 +1,13 @@
 #!/bin/bash
 
-alias c="cal -B1 -A1"
 alias myip="curl -s checkip.dyndns.org | sed -e 's/.*Current IP Address: //' -e 's/<.*$//'"
 alias passwdgen="</dev/urandom tr -dc '12345!@#$%qwertQWERTasdfgASDFGzxcvbZXCVB' | head -c12; echo \"\""
 alias trim="sed 's/^\s*//g' | sed 's/\s*$//g'"
 alias dk="docker-compose"
 
-# git aliases
-alias gg="git fetch upstream && git rebase upstream/master master && git submodule update"
-
 # open changed/staged files in vim
 alias vimdi="vimgit diff --diff-filter=ACMRTUXB"
 alias vimdis="vimgit diff --diff-filter=ACMRTUXB --staged"
+alias vimh="vimgit diff --diff-filter=ACMRTUXB HEAD~1"
 
-alias keybfr="setxkbmap fr"
-
-# copy/paste with clip
-alias ccopy="xclip -selection clipboard"
-alias cpaste="xclip -selection clipboard -o"
+alias dockerps="docker ps --format '{{.Names}}' | sort"
