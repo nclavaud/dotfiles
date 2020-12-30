@@ -1,0 +1,25 @@
+# this configuration file is suitable for displaying kernel log files
+
+# example of text substitution
+#regexp=\bda?emon
+#replace=angel
+#colours=red
+#======
+# example of text substitution
+#regexp=(\d\d):(\d\d):(\d\d)
+#replace=\1h\2m\3s
+#======
+
+# date between brackets
+regexp=\[[\d\-\s:]+]
+colours=green
+count=once
+======
+regexp=\w+\.(ERROR|CRITICAL)
+colours=red
+======
+regexp=\w+\.(WARNING|NOTICE|INFO|DEBUG)
+colours=yellow
+======
+regexp={.*}
+colours=blue
