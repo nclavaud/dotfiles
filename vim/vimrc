@@ -22,6 +22,9 @@ Plugin 'aklt/plantuml-syntax' " syntax colorization for PlantUML files
 Plugin 'phpactor/phpactor' " refactoring utility for PHP
 Bundle 'joonty/vim-phpqa.git'
 Plugin 'editorconfig/editorconfig-vim' "
+Plugin 'leafgarland/typescript-vim' " syntax colorization for TypeScript
+Plugin 'peitalin/vim-jsx-typescript' " syntax colorization for TSX
+Plugin 'mileszs/ack.vim' " run search tool from Vim
 
 call vundle#end()
 filetype plugin indent on
@@ -121,5 +124,10 @@ set noswapfile
 
 " For those using the fish shell, see https://github.com/VundleVim/Vundle.Vim#quick-start
 set shell=/bin/bash
+
+" Ack -> Ag
+if executable('ag')
+    let g:ackprg = 'ag --vimgrep'
+endif
 
 :set scrolloff=8
