@@ -123,3 +123,7 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+
+# Start typing a command and search history with up/down
+bind '"\e[A":history-search-backward'
+bind '"\e[B":history-search-forward'
