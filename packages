@@ -21,9 +21,6 @@ sudo apt-get install -y --no-install-recommends \
     httpie \
     make \
     meld \
-    network-manager-openvpn \
-    network-manager-openvpn-gnome \
-    ruby \
     silversearcher-ag \
     terminator \
     tig \
