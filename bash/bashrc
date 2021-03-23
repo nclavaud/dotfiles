@@ -124,6 +124,9 @@ if ! shopt -oq posix; then
   fi
 fi
 
+# More directories to look up
+export CDPATH=".:~"
+
 # Start typing a command and search history with up/down
 bind '"\e[A":history-search-backward'
 bind '"\e[B":history-search-forward'
